@@ -57,7 +57,7 @@
       right: 0;
     }
 
-    /* PROJECTS SECTION — 25% page height */
+    /* PROJECTS SECTION — 25vh */
     #projects {
       height: 25vh;
       background: black;
@@ -74,18 +74,17 @@
     }
 
     /* -----------------------------
-       MOBILE RESPONSIVE SCALING
+       MOBILE SCALING (all mobile)
        ----------------------------- */
-
     @media (max-width: 768px) {
       .bottom-left,
       .bottom-center,
       .contact-link {
-        font-size: 1.1rem;       /* slightly smaller on mobile */
+        font-size: 1.1rem;
       }
 
       #projects {
-        font-size: 1.1rem;        /* scale project section text */
+        font-size: 1.1rem;
         padding: 20px;
       }
 
@@ -96,15 +95,57 @@
       }
     }
 
+    /* ----------------------------------------------
+       MOBILE PORTRAIT MODE — STACK NAME ABOVE LINKS
+       ---------------------------------------------- */
+    @media (max-width: 768px) and (orientation: portrait) {
+
+      .bottom-bar {
+        flex-direction: column;       /* stack items vertically */
+        align-items: flex-start;      /* keep left alignment */
+        bottom: 20px;
+      }
+
+      .bottom-left {
+        position: relative;
+        margin-bottom: 8px;           /* spacing above other links */
+      }
+
+      .bottom-center,
+      .contact-link {
+        position: relative;           /* remove absolute positioning */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: none;
+      }
+
+      .bottom-center {
+        margin-right: 20px;           /* spacing between PROJECTS and CONTACT */
+      }
+
+      .link-row {
+        display: flex;
+        gap: 20px;
+      }
+    }
+
   </style>
 </head>
 <body>
+
   <div class="image-wrapper">
 
     <div class="bottom-bar">
+
       <div class="bottom-left">NATHAN TRACHIMOWICZ</div>
-      <a class="bottom-center" href="#projects">PROJECTS</a>
-      <a class="contact-link" href="mailto:ntrachim@gmail.com">CONTACT</a>
+
+      <!-- Wrapper for PROJECTS + CONTACT in portrait mode -->
+      <div class="link-row">
+        <a class="bottom-center" href="#projects">PROJECTS</a>
+        <a class="contact-link" href="mailto:ntrachim@gmail.com">CONTACT</a>
+      </div>
+
     </div>
 
   </div>
