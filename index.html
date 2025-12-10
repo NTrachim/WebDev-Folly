@@ -24,7 +24,7 @@
     }
 
     /* -----------------------------------
-       BOTTOM BAR — FLEXBOX ALIGNMENT
+       BOTTOM BAR — DESKTOP & LANDSCAPE
        ----------------------------------- */
     .bottom-bar {
       position: absolute;
@@ -39,41 +39,23 @@
       pointer-events: none;
     }
 
-    .left-area {
+    .left-area,
+    .center-area a,
+    .right-area a {
       pointer-events: auto;
       color: white;
       font-size: 1.5rem;
       font-weight: bold;
+      text-decoration: none;
       text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
       font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
     }
 
-    /* CENTERED PROJECTS */
+    /* PROJECTS centered on desktop */
     .center-area {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      pointer-events: auto;
-    }
-
-    .center-area a {
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-decoration: none;
-      text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-      font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
-    }
-
-    /* RIGHT SIDE CONTACT */
-    .right-area a {
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-decoration: none;
-      pointer-events: auto;
-      text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-      font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
     }
 
     /* -----------------------------------
@@ -117,36 +99,50 @@
     }
 
     /* -----------------------------------
-       MOBILE PORTRAIT — NAME ON OWN LINE
+       MOBILE PORTRAIT — SPECIAL LAYOUT
        ----------------------------------- */
     @media (max-width: 768px) and (orientation: portrait) {
 
+      /* Stack NAME above the links */
       .bottom-bar {
         flex-direction: column;
-        align-items: center;
-        gap: 10px;
+        align-items: stretch;
+        gap: 12px;
       }
 
       .left-area {
         align-self: flex-start;
-        margin-left: 0;
       }
 
-      /* PROJECTS + CONTACT on same line */
-      .link-row {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        pointer-events: auto;
-      }
-
+      /* Replace absolute-centered PROJECTS with flexible layout */
       .center-area {
         position: static;
         transform: none;
+        width: 100%;
       }
 
+      /* Replace right-area layout */
       .right-area {
-        position: static;
+        width: 100%;
+      }
+
+      /* PROJECTS + CONTACT justified apart */
+      .mobile-link-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      /* Hide the normal desktop layout in portrait */
+      .desktop-links {
+        display: none;
+      }
+    }
+
+    /* Desktop & landscape show original layout */
+    @media (min-width: 769px), (orientation: landscape) {
+      .mobile-link-row {
+        display: none;
       }
     }
 
@@ -156,24 +152,27 @@
 <body>
 
   <div class="image-wrapper">
-
     <div class="bottom-bar">
 
-      <!-- LEFT: NAME -->
+      <!-- NAME (always visible) -->
       <div class="left-area">NATHAN TRACHIMOWICZ</div>
 
-      <!-- CENTER: PROJECTS (absolute center on desktop) -->
-      <div class="center-area">
+      <!-- DESKTOP / LANDSCAPE LINKS -->
+      <div class="desktop-links center-area">
         <a href="#projects">PROJECTS</a>
       </div>
 
-      <!-- RIGHT: CONTACT -->
-      <div class="right-area">
+      <div class="desktop-links right-area">
         <a href="mailto:ntrachim@gmail.com">CONTACT</a>
       </div>
 
-    </div>
+      <!-- MOBILE PORTRAIT JUSTIFIED LINKS -->
+      <div class="mobile-link-row">
+        <a class="left-area" href="#projects">PROJECTS</a>
+        <a class="right-area" href="mailto:ntrachim@gmail.com">CONTACT</a>
+      </div>
 
+    </div>
   </div>
 
   <div id="projects">
@@ -188,5 +187,3 @@ A costly undertaking having an absurd or ruinous outcome.
 
 </body>
 </html>
-
-
