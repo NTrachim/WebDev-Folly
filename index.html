@@ -3,13 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>N Trachimowiczs</title>
-  <link rel="stylesheet" href="./assets/css/main.css">
+  <title>Folly In Love</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+    }
+
+    .image-wrapper {
+      margin: 20px;
+      height: calc(100vh - 40px);
+      background: url("./assets/images/background_image.jpg") no-repeat center center;
+      background-size: cover;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .bottom-bar {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .bottom-left,
+    .bottom-center,
+    .contact-link {
+      font-size: 1.5rem;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      font-family: "Franklin Gothic Demi Cond", "Franklin Gothic Medium", "Franklin Gothic", Arial, sans-serif;
+      pointer-events: auto;
+      text-decoration: none;
+    }
+
+    .bottom-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .contact-link {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    /* PROJECTS SECTION — now 25vh and left-aligned */
+    #projects {
+      height: 25vh; /* 1/4 the screen height */
+      background: black;
+      display: flex;
+      justify-content: flex-start; /* left-align content container */
+      align-items: center;         /* vertical centering */
+      padding: 40px;
+      color: white;
+      font-family: "Franklin Gothic Demi Cond", "Franklin Gothic Medium", "Franklin Gothic", Arial, sans-serif;
+      font-size: 1.4rem;
+      line-height: 1.5;
+      white-space: pre-line; /* preserves line breaks */
+      text-align: left;      /* left justification */
+    }
+  </style>
 </head>
 <body>
-  <div>
-    <a style="font-size: 1.5rem;" href="mailto:ntrachim@gmail.com">Contact</a>
+  <div class="image-wrapper">
+
+    <div class="bottom-bar">
+      <div class="bottom-left">NATHAN TRACHIMOWICZ</div>
+      <a class="bottom-center" href="#projects">PROJECTS</a>
+      <a class="contact-link" href="mailto:ntrachim@gmail.com">CONTACT</a>
+    </div>
+
   </div>
-  <img src="./assets/images/background_image.jpg" alt="">
+
+  <!-- PROJECTS SECTION WITH LEFT-JUSTIFIED TEXT -->
+  <div id="projects">
+folly /fŏl′ē/
+noun
+Lack of good sense, understanding, or foresight.
+
+An act or instance of foolishness.
+
+A costly undertaking having an absurd or ruinous outcome.
+  </div>
+
 </body>
 </html>
