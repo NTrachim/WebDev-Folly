@@ -24,14 +24,13 @@
     }
 
     /* -----------------------------------
-       BOTTOM BAR — DEFAULT (Desktop/Landscape)
+       DESKTOP / LANDSCAPE LAYOUT
        ----------------------------------- */
     .bottom-bar {
       position: absolute;
       bottom: 20px;
       left: 20px;
       right: 20px;
-
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -50,11 +49,16 @@
       font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
     }
 
-    /* Center PROJECTS on desktop */
+    /* CENTER PROJECTS (DESKTOP ONLY) */
     .center-area {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+    }
+
+    /* HIDE the mobile row by default */
+    .mobile-row {
+      display: none;
     }
 
     /* -----------------------------------
@@ -76,7 +80,7 @@
     }
 
     /* -----------------------------------
-       MOBILE RESPONSIVE SCALING
+       MOBILE GLOBAL SCALING
        ----------------------------------- */
     @media (max-width: 768px) {
       .name,
@@ -98,33 +102,41 @@
     }
 
     /* -----------------------------------
-       MOBILE PORTRAIT — STACK ELEMENTS
+       MOBILE PORTRAIT — STACK LAYOUT
        ----------------------------------- */
     @media (max-width: 768px) and (orientation: portrait) {
 
+      /* Switch to vertical stacking */
       .bottom-bar {
         flex-direction: column;
         align-items: stretch;
         gap: 12px;
       }
 
-      /* NAME on separate line */
+      /* NAME gets its own line */
       .name {
         width: 100%;
       }
 
-      /* Remove desktop absolute centering */
-      .center-area {
-        position: static;
-        transform: none;
-        width: 100%;
-        text-align: left;
+      /* Hide desktop PROJECTS and CONTACT */
+      .center-area,
+      .contact-link.desktop {
+        display: none !important;
       }
 
-      /* CONTACT on its own line (right aligned) */
-      .contact-link {
+      /* Show mobile PROJECTS + CONTACT row */
+      .mobile-row {
+        display: flex;
+        justify-content: space-between;
         width: 100%;
-        text-align: right;
+      }
+
+      .mobile-row a {
+        color: white;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
       }
     }
 
@@ -139,11 +151,17 @@
       <!-- NAME -->
       <div class="name">NATHAN TRACHIMOWICZ</div>
 
-      <!-- PROJECTS centered on desktop -->
+      <!-- DESKTOP PROJECTS (centered) -->
       <a class="projects-link center-area" href="#projects">PROJECTS</a>
 
-      <!-- CONTACT right aligned -->
-      <a class="contact-link" href="mailto:ntrachim@gmail.com">CONTACT</a>
+      <!-- DESKTOP CONTACT -->
+      <a class="contact-link desktop" href="mailto:ntrachim@gmail.com">CONTACT</a>
+
+      <!-- MOBILE PORTRAIT ROW -->
+      <div class="mobile-row">
+        <a href="#projects">PROJECTS</a>
+        <a href="mailto:ntrachim@gmail.com">CONTACT</a>
+      </div>
 
     </div>
   </div>
@@ -160,3 +178,4 @@ A costly undertaking having an absurd or ruinous outcome.
 
 </body>
 </html>
+
