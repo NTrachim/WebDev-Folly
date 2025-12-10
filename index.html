@@ -57,42 +57,65 @@
       right: 0;
     }
 
-    /* PROJECTS SECTION — now 25vh and left-aligned */
+    /* PROJECTS SECTION — 25% page height */
     #projects {
-      height: 25vh; /* 1/4 the screen height */
+      height: 25vh;
       background: black;
       display: flex;
-      justify-content: flex-start; /* left-align content container */
-      align-items: center;         /* vertical centering */
+      justify-content: flex-start;
+      align-items: center;
       padding: 40px;
       color: white;
       font-family: "Franklin Gothic Demi Cond", "Franklin Gothic Medium", "Franklin Gothic", Arial, sans-serif;
       font-size: 1.4rem;
       line-height: 1.5;
-      white-space: pre-line; /* preserves line breaks */
-      text-align: left;      /* left justification */
+      white-space: pre-line;
+      text-align: left;
     }
+
+    /* -----------------------------
+       MOBILE RESPONSIVE SCALING
+       ----------------------------- */
+
+    @media (max-width: 768px) {
+      .bottom-left,
+      .bottom-center,
+      .contact-link {
+        font-size: 1.1rem;       /* slightly smaller on mobile */
+      }
+
+      #projects {
+        font-size: 1.1rem;        /* scale project section text */
+        padding: 20px;
+      }
+
+      .image-wrapper {
+        margin: 10px;
+        border-radius: 6px;
+        height: calc(100vh - 20px);
+      }
+    }
+
   </style>
 </head>
 <body>
   <div class="image-wrapper">
 
     <div class="bottom-bar">
-      <div class="bottom-left">NATHAN TRACHIMOWICZ</div>
+      <div class="bottom-left">NAME</div>
       <a class="bottom-center" href="#projects">PROJECTS</a>
       <a class="contact-link" href="mailto:ntrachim@gmail.com">CONTACT</a>
     </div>
 
   </div>
 
-  <!-- PROJECTS SECTION WITH LEFT-JUSTIFIED TEXT -->
   <div id="projects">
 folly /fŏl′ē/
 noun
 Lack of good sense, understanding, or foresight.
-
+"an act of folly"
 An act or instance of foolishness.
-
+"regretted the follies of his youth."
 A costly undertaking having an absurd or ruinous outcome.
   </div>
 
