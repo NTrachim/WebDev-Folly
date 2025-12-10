@@ -24,7 +24,7 @@
     }
 
     /* -----------------------------------
-       BOTTOM BAR — DESKTOP & LANDSCAPE
+       BOTTOM BAR — DEFAULT (Desktop/Landscape)
        ----------------------------------- */
     .bottom-bar {
       position: absolute;
@@ -35,13 +35,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-
       pointer-events: none;
     }
 
-    .left-area,
-    .center-area a,
-    .right-area a {
+    .name,
+    .projects-link,
+    .contact-link {
       pointer-events: auto;
       color: white;
       font-size: 1.5rem;
@@ -51,7 +50,7 @@
       font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
     }
 
-    /* PROJECTS centered on desktop */
+    /* Center PROJECTS on desktop */
     .center-area {
       position: absolute;
       left: 50%;
@@ -80,9 +79,9 @@
        MOBILE RESPONSIVE SCALING
        ----------------------------------- */
     @media (max-width: 768px) {
-      .left-area,
-      .center-area a,
-      .right-area a {
+      .name,
+      .projects-link,
+      .contact-link {
         font-size: 1.1rem;
       }
 
@@ -99,50 +98,33 @@
     }
 
     /* -----------------------------------
-       MOBILE PORTRAIT — SPECIAL LAYOUT
+       MOBILE PORTRAIT — STACK ELEMENTS
        ----------------------------------- */
     @media (max-width: 768px) and (orientation: portrait) {
 
-      /* Stack NAME above the links */
       .bottom-bar {
         flex-direction: column;
         align-items: stretch;
         gap: 12px;
       }
 
-      .left-area {
-        align-self: flex-start;
+      /* NAME on separate line */
+      .name {
+        width: 100%;
       }
 
-      /* Replace absolute-centered PROJECTS with flexible layout */
+      /* Remove desktop absolute centering */
       .center-area {
         position: static;
         transform: none;
         width: 100%;
+        text-align: left;
       }
 
-      /* Replace right-area layout */
-      .right-area {
+      /* CONTACT on its own line (right aligned) */
+      .contact-link {
         width: 100%;
-      }
-
-      /* PROJECTS + CONTACT justified apart */
-      .mobile-link-row {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-      }
-
-      /* Hide the normal desktop layout in portrait */
-      .desktop-links {
-        display: none;
-      }
-    }
-
-    /* Desktop & landscape show original layout */
-    @media (min-width: 769px), (orientation: landscape) {
-      .mobile-link-row {
-        display: none;
+        text-align: right;
       }
     }
 
@@ -154,23 +136,14 @@
   <div class="image-wrapper">
     <div class="bottom-bar">
 
-      <!-- NAME (always visible) -->
-      <div class="left-area">NATHAN TRACHIMOWICZ</div>
+      <!-- NAME -->
+      <div class="name">NATHAN TRACHIMOWICZ</div>
 
-      <!-- DESKTOP / LANDSCAPE LINKS -->
-      <div class="desktop-links center-area">
-        <a href="#projects">PROJECTS</a>
-      </div>
+      <!-- PROJECTS centered on desktop -->
+      <a class="projects-link center-area" href="#projects">PROJECTS</a>
 
-      <div class="desktop-links right-area">
-        <a href="mailto:ntrachim@gmail.com">CONTACT</a>
-      </div>
-
-      <!-- MOBILE PORTRAIT JUSTIFIED LINKS -->
-      <div class="mobile-link-row">
-        <a class="left-area" href="#projects">PROJECTS</a>
-        <a class="right-area" href="mailto:ntrachim@gmail.com">CONTACT</a>
-      </div>
+      <!-- CONTACT right aligned -->
+      <a class="contact-link" href="mailto:ntrachim@gmail.com">CONTACT</a>
 
     </div>
   </div>
