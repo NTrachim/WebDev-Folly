@@ -23,42 +23,62 @@
       overflow: hidden;
     }
 
+    /* -----------------------------------
+       BOTTOM BAR — FLEXBOX ALIGNMENT
+       ----------------------------------- */
     .bottom-bar {
       position: absolute;
       bottom: 20px;
       left: 20px;
       right: 20px;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       pointer-events: none;
     }
 
-    .bottom-left,
-    .bottom-center,
-    .contact-link {
-      font-size: 1.5rem;
+    .left-area {
+      pointer-events: auto;
       color: white;
+      font-size: 1.5rem;
       font-weight: bold;
       text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-      font-family: "Franklin Gothic Demi Cond", "Franklin Gothic Medium", "Franklin Gothic", Arial, sans-serif;
-      pointer-events: auto;
-      text-decoration: none;
+      font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
     }
 
-    .bottom-center {
+    /* CENTERED PROJECTS */
+    .center-area {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      pointer-events: auto;
     }
 
-    .contact-link {
-      position: absolute;
-      bottom: 0;
-      right: 0;
+    .center-area a {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
     }
 
-    /* PROJECTS SECTION */
+    /* RIGHT SIDE CONTACT */
+    .right-area a {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      pointer-events: auto;
+      text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
+    }
+
+    /* -----------------------------------
+       PROJECTS SECTION
+       ----------------------------------- */
     #projects {
       height: 25vh;
       background: black;
@@ -67,20 +87,20 @@
       align-items: center;
       padding: 40px;
       color: white;
-      font-family: "Franklin Gothic Demi Cond", "Franklin Gothic Medium", "Franklin Gothic", Arial, sans-serif;
+      font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
       font-size: 1.4rem;
       line-height: 1.5;
       white-space: pre-line;
       text-align: left;
     }
 
-    /* ---------------------------------------------
-       MOBILE SCALING
-       --------------------------------------------- */
+    /* -----------------------------------
+       MOBILE RESPONSIVE SCALING
+       ----------------------------------- */
     @media (max-width: 768px) {
-      .bottom-left,
-      .bottom-center,
-      .contact-link {
+      .left-area,
+      .center-area a,
+      .right-area a {
         font-size: 1.1rem;
       }
 
@@ -96,43 +116,40 @@
       }
     }
 
-    /* ---------------------------------------------------------
-       MOBILE PORTRAIT — NAME stacked above links
-       --------------------------------------------------------- */
+    /* -----------------------------------
+       MOBILE PORTRAIT — NAME ON OWN LINE
+       ----------------------------------- */
     @media (max-width: 768px) and (orientation: portrait) {
 
       .bottom-bar {
         flex-direction: column;
-        align-items: flex-start;
-        bottom: 20px;
+        align-items: center;
+        gap: 10px;
       }
 
-      .bottom-left {
-        position: relative;
-        margin-bottom: 12px;
+      .left-area {
+        align-self: flex-start;
+        margin-left: 0;
       }
 
-      /* Reset all previous positioning for portrait */
-      .bottom-center,
-      .contact-link {
-        position: relative !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        transform: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        line-height: 1 !important;
-      }
-
-      /* PROJECTS + CONTACT side-by-side */
+      /* PROJECTS + CONTACT on same line */
       .link-row {
         display: flex;
         flex-direction: row;
-        align-items: center;
         gap: 20px;
+        pointer-events: auto;
+      }
+
+      .center-area {
+        position: static;
+        transform: none;
+      }
+
+      .right-area {
+        position: static;
       }
     }
+
   </style>
 </head>
 
@@ -142,12 +159,17 @@
 
     <div class="bottom-bar">
 
-      <div class="bottom-left">NAME</div>
+      <!-- LEFT: NAME -->
+      <div class="left-area">NATHAN TRACHIMOWICZ</div>
 
-      <!-- PROJECTS + CONTACT grouped for portrait mode -->
-      <div class="link-row">
-        <a class="bottom-center" href="#projects">PROJECTS</a>
-        <a class="contact-link" href="mailto:ntrachim@gmail.com">CONTACT</a>
+      <!-- CENTER: PROJECTS (absolute center on desktop) -->
+      <div class="center-area">
+        <a href="#projects">PROJECTS</a>
+      </div>
+
+      <!-- RIGHT: CONTACT -->
+      <div class="right-area">
+        <a href="mailto:ntrachim@gmail.com">CONTACT</a>
       </div>
 
     </div>
@@ -166,4 +188,5 @@ A costly undertaking having an absurd or ruinous outcome.
 
 </body>
 </html>
+
 
