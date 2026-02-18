@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Folly In Love</title>
+
   <style>
     html, body {
       margin: 0;
@@ -15,13 +16,16 @@
     .image-wrapper {
       margin: 20px;
       height: calc(100vh - 40px);
-      background: url("./assets/images/background_image.jpg") no-repeat center center;
+      background: url("./assets/images/background_image.JPG") no-repeat center center;
       background-size: cover;
       position: relative;
       border-radius: 8px;
       overflow: hidden;
     }
 
+    /* -----------------------------------
+       DESKTOP / LANDSCAPE LAYOUT
+       ----------------------------------- */
     .bottom-bar {
       position: absolute;
       bottom: 20px;
@@ -30,71 +34,146 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      pointer-events: none;
     }
 
-    .bottom-left,
-    .bottom-center,
+    .name,
+    .projects-link,
     .contact-link {
-      font-size: 1.5rem;
       color: white;
+      font-size: 1.5rem;
       font-weight: bold;
-      text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-      font-family: "Franklin Gothic Demi Cond", "Franklin Gothic Medium", "Franklin Gothic", Arial, sans-serif;
-      pointer-events: auto;
       text-decoration: none;
+      text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+      font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
+      pointer-events: auto;
     }
 
-    .bottom-center {
+    .center-area {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
     }
 
-    .contact-link {
-      position: absolute;
-      bottom: 0;
-      right: 0;
+    .mobile-row {
+      display: none;
     }
 
-    /* PROJECTS SECTION — now 25vh and left-aligned */
+    /* -----------------------------------
+       PROJECTS SECTION
+       ----------------------------------- */
     #projects {
-      height: 25vh; /* 1/4 the screen height */
+      min-height: 25vh;
       background: black;
-      display: flex;
-      justify-content: flex-start; /* left-align content container */
-      align-items: center;         /* vertical centering */
       padding: 40px;
       color: white;
-      font-family: "Franklin Gothic Demi Cond", "Franklin Gothic Medium", "Franklin Gothic", Arial, sans-serif;
+      font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
       font-size: 1.4rem;
       line-height: 1.5;
-      white-space: pre-line; /* preserves line breaks */
-      text-align: left;      /* left justification */
+      white-space: pre-line;
+      text-align: left;
     }
+
+    /* -----------------------------------
+       RISE IMAGE (REPLACES PLACEHOLDER)
+       ----------------------------------- */
+    .rise-image {
+      margin-top: 40px;
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+
+    /* -----------------------------------
+       MOBILE SCALING
+       ----------------------------------- */
+    @media (max-width: 768px) {
+      .name,
+      .projects-link,
+      .contact-link {
+        font-size: 1.1rem;
+      }
+
+      #projects {
+        font-size: 1.1rem;
+        padding: 20px;
+      }
+
+      .image-wrapper {
+        margin: 10px;
+        border-radius: 6px;
+        height: calc(100vh - 20px);
+      }
+
+      .rise-image {
+        margin-top: 20px;
+        border-radius: 6px;
+      }
+    }
+
+    /* -----------------------------------
+       MOBILE PORTRAIT — STACK LAYOUT
+       ----------------------------------- */
+    @media (max-width: 768px) and (orientation: portrait) {
+
+      .bottom-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .name {
+        width: 100%;
+      }
+
+      .center-area,
+      .contact-link.desktop {
+        display: none !important;
+      }
+
+      .mobile-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .mobile-row a {
+        color: white;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
+      }
+    }
+
   </style>
 </head>
+
 <body>
-  <div class="image-wrapper">
 
-    <div class="bottom-bar">
-      <div class="bottom-left">NATHAN TRACHIMOWICZ</div>
-      <a class="bottom-center" href="#projects">PROJECTS</a>
-      <a class="contact-link" href="mailto:ntrachim@gmail.com">CONTACT</a>
+<div class="image-wrapper">
+  <div class="bottom-bar">
+    <div class="name">NATHAN TRACHIMOWICZ</div>
+    <a class="projects-link center-area" href="#projects">PROJECTS</a>
+    <a class="contact-link desktop" href="mailto:ntrachim@gmail.com">CONTACT</a>
+
+    <div class="mobile-row">
+      <a href="#projects">PROJECTS</a>
+      <a href="mailto:ntrachim@gmail.com">CONTACT</a>
     </div>
-
   </div>
+</div>
 
-  <!-- PROJECTS SECTION WITH LEFT-JUSTIFIED TEXT -->
-  <div id="projects">
-folly /fŏl′ē/
-noun
-Lack of good sense, understanding, or foresight.
+<div id="projects">
+  folly /fŏl′ē/
+  noun
+  Lack of good sense, understanding, or foresight.
 
-An act or instance of foolishness.
+  An act or instance of foolishness.
 
-A costly undertaking having an absurd or ruinous outcome.
-  </div>
+  A costly undertaking having an absurd or ruinous outcome.
+
+  <img src="./assets/images/rise_gradient.JPG" class="rise-image" alt="Rise Gradient">
+</div>
 
 </body>
 </html>
