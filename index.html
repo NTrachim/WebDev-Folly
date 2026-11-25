@@ -71,22 +71,27 @@
       line-height: 1.5;
       white-space: pre-line;
       text-align: left;
+      position: relative;
+      z-index: 1;
     }
 
     /* -----------------------------------
-       RISE IMAGE (REPLACES PLACEHOLDER)
+       RISE IMAGE (STRONG OVERLAP)
        ----------------------------------- */
     .rise-image {
-      margin-top: 40px;
+      margin-top: -80px;   /* Strong overlap */
       width: 100%;
       border-radius: 8px;
       display: block;
+      position: relative;
+      z-index: 2;
     }
 
     /* -----------------------------------
        MOBILE SCALING
        ----------------------------------- */
     @media (max-width: 768px) {
+
       .name,
       .projects-link,
       .contact-link {
@@ -104,8 +109,9 @@
         height: calc(100vh - 20px);
       }
 
+      /* Slightly softer overlap on mobile */
       .rise-image {
-        margin-top: 20px;
+        margin-top: -40px;
         border-radius: 6px;
       }
     }
@@ -150,31 +156,30 @@
 
 <body>
 
-<div class="image-wrapper">
-  <div class="bottom-bar">
-    <div class="name">NATHAN TRACHIMOWICZ</div>
-    <a class="projects-link center-area" href="#projects">PROJECTS</a>
-    <a class="contact-link desktop" href="mailto:ntrachim@gmail.com">CONTACT</a>
+  <div class="image-wrapper">
+    <div class="bottom-bar">
+      <div class="name">NATHAN TRACHIMOWICZ</div>
+      <a class="projects-link center-area" href="#projects">PROJECTS</a>
+      <a class="contact-link desktop" href="mailto:ntrachim@gmail.com">CONTACT</a>
 
-    <div class="mobile-row">
-      <a href="#projects">PROJECTS</a>
-      <a href="mailto:ntrachim@gmail.com">CONTACT</a>
+      <div class="mobile-row">
+        <a href="#projects">PROJECTS</a>
+        <a href="mailto:ntrachim@gmail.com">CONTACT</a>
+      </div>
     </div>
   </div>
-</div>
 
-<div id="projects">
-  folly /fŏl′ē/
-  noun
-  Lack of good sense, understanding, or foresight.
+  <div id="projects">
+folly /fŏl′ē/
+noun
+Lack of good sense, understanding, or foresight.
 
-  An act or instance of foolishness.
+An act or instance of foolishness.
 
-  A costly undertaking having an absurd or ruinous outcome.
+A costly undertaking having an absurd or ruinous outcome.
 
-  <img src="./assets/images/rise_gradient.JPG" class="rise-image" alt="Rise Gradient">
-</div>
+    <img src="./assets/images/rise_gradient.JPG" class="rise-image" alt="Rise Gradient">
+  </div>
 
 </body>
 </html>
-
