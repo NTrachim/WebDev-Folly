@@ -14,6 +14,10 @@
       --image-overlap: -80px;
       --image-fade: 15%;
       --side-fade: 4%;
+
+      --rise-bottom-fade: 15%;
+      --reflection-2-top-fade: 20%;
+
       --final-bottom-fade: 25%;
     }
 
@@ -124,13 +128,28 @@
 
     /* -----------------------------------
        RISE IMAGE
-       PRESERVE ORIGINAL BUILT-IN GRADIENT
+       ORIGINAL BRIGHTNESS
+       SOFT BOTTOM EDGE ONLY
        ----------------------------------- */
     .rise-image {
       opacity: 1;
       filter: none;
-      -webkit-mask-image: none;
-      mask-image: none;
+
+      -webkit-mask-image:
+        linear-gradient(
+          to bottom,
+          black 0%,
+          black calc(100% - var(--rise-bottom-fade)),
+          transparent 100%
+        );
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black 0%,
+          black calc(100% - var(--rise-bottom-fade)),
+          transparent 100%
+        );
     }
 
     /* -----------------------------------
@@ -139,13 +158,14 @@
        ----------------------------------- */
     .reflection-image {
 
+      --top-fade: var(--image-fade);
       --bottom-fade: var(--image-fade);
 
       -webkit-mask-image:
         linear-gradient(
           to bottom,
           transparent 0%,
-          black var(--image-fade),
+          black var(--top-fade),
           black calc(100% - var(--bottom-fade)),
           transparent 100%
         ),
@@ -163,7 +183,7 @@
         linear-gradient(
           to bottom,
           transparent 0%,
-          black var(--image-fade),
+          black var(--top-fade),
           black calc(100% - var(--bottom-fade)),
           transparent 100%
         ),
@@ -176,6 +196,14 @@
         );
 
       mask-composite: intersect;
+    }
+
+    /* -----------------------------------
+       REFLECTION 2
+       SOFTER TRANSITION FROM RISE
+       ----------------------------------- */
+    .reflection-2 {
+      --top-fade: var(--reflection-2-top-fade);
     }
 
     /* -----------------------------------
@@ -203,6 +231,10 @@
         --image-overlap: -40px;
         --image-fade: 15%;
         --side-fade: 4%;
+
+        --rise-bottom-fade: 15%;
+        --reflection-2-top-fade: 20%;
+
         --final-bottom-fade: 25%;
       }
 
@@ -317,16 +349,16 @@ A costly undertaking having an absurd or ruinous outcome.
     <!-- CONTINUOUS IMAGE SEQUENCE -->
     <div class="image-sequence">
 
-      <!-- RISE — ORIGINAL GRADIENT -->
+      <!-- RISE — SOFT BOTTOM GRADIENT -->
       <img
         src="./assets/images/rise_gradient.jpg"
         class="project-image rise-image"
         alt="Rise Gradient">
 
-      <!-- REFLECTION 2 -->
+      <!-- REFLECTION 2 — SOFTER TOP GRADIENT -->
       <img
         src="./assets/images/reflection_2.jpg"
-        class="project-image reflection-image"
+        class="project-image reflection-image reflection-2"
         alt="Reflection 2">
 
       <!-- REFLECTION 1 -->
