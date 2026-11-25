@@ -120,10 +120,26 @@
       padding: 0;
       border: none;
       border-radius: 8px;
+    }
+
+    /* -----------------------------------
+       RISE IMAGE
+       PRESERVE ORIGINAL BUILT-IN GRADIENT
+       ----------------------------------- */
+    .rise-image {
+      opacity: 1;
+      filter: none;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+
+    /* -----------------------------------
+       REFLECTION IMAGES
+       SOFT TOP, BOTTOM, LEFT & RIGHT EDGES
+       ----------------------------------- */
+    .reflection-image {
 
       --bottom-fade: var(--image-fade);
-
-      /* Soft top, bottom, left and right edges */
 
       -webkit-mask-image:
         linear-gradient(
@@ -166,7 +182,7 @@
        FINAL IMAGE
        EXTENDED FADE BACK TO BLACK
        ----------------------------------- */
-    .project-image:last-child {
+    .reflection-image:last-child {
       --bottom-fade: var(--final-bottom-fade);
     }
 
@@ -301,29 +317,23 @@ A costly undertaking having an absurd or ruinous outcome.
     <!-- CONTINUOUS IMAGE SEQUENCE -->
     <div class="image-sequence">
 
-      <!-- RISE GRADIENT -->
+      <!-- RISE — ORIGINAL GRADIENT -->
       <img
         src="./assets/images/rise_gradient.jpg"
-        class="project-image"
+        class="project-image rise-image"
         alt="Rise Gradient">
 
       <!-- REFLECTION 2 -->
       <img
         src="./assets/images/reflection_2.jpg"
-        class="project-image"
+        class="project-image reflection-image"
         alt="Reflection 2">
 
       <!-- REFLECTION 1 -->
       <img
         src="./assets/images/reflection_1.jpg"
-        class="project-image"
+        class="project-image reflection-image"
         alt="Reflection 1">
-
-      <!-- REFLECTION 3 -->
-      <img
-        src="./assets/images/reflection_3.jpg"
-        class="project-image"
-        alt="Reflection 3">
 
     </div>
 
