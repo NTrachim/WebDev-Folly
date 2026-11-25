@@ -14,7 +14,7 @@
       --image-overlap: -80px;
       --image-fade: 15%;
       --side-fade: 4%;
-      --rise-bottom-fade: 25%;
+      --final-bottom-fade: 25%;
     }
 
     html, body {
@@ -120,20 +120,17 @@
       padding: 0;
       border: none;
       border-radius: 8px;
-    }
 
-    /* -----------------------------------
-       REFLECTION IMAGES
-       SOFT TOP, BOTTOM, LEFT & RIGHT EDGES
-       ----------------------------------- */
-    .reflection-image {
+      --bottom-fade: var(--image-fade);
+
+      /* Soft top, bottom, left and right edges */
 
       -webkit-mask-image:
         linear-gradient(
           to bottom,
           transparent 0%,
           black var(--image-fade),
-          black calc(100% - var(--image-fade)),
+          black calc(100% - var(--bottom-fade)),
           transparent 100%
         ),
         linear-gradient(
@@ -151,7 +148,7 @@
           to bottom,
           transparent 0%,
           black var(--image-fade),
-          black calc(100% - var(--image-fade)),
+          black calc(100% - var(--bottom-fade)),
           transparent 100%
         ),
         linear-gradient(
@@ -166,46 +163,11 @@
     }
 
     /* -----------------------------------
-       RISE IMAGE
-       EXTENDED SOFT FADE BACK TO BLACK
+       FINAL IMAGE
+       EXTENDED FADE BACK TO BLACK
        ----------------------------------- */
-    .rise-image {
-
-      -webkit-mask-image:
-        linear-gradient(
-          to bottom,
-          transparent 0%,
-          black var(--image-fade),
-          black calc(100% - var(--rise-bottom-fade)),
-          transparent 100%
-        ),
-        linear-gradient(
-          to right,
-          transparent 0%,
-          black var(--side-fade),
-          black calc(100% - var(--side-fade)),
-          transparent 100%
-        );
-
-      -webkit-mask-composite: source-in;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          transparent 0%,
-          black var(--image-fade),
-          black calc(100% - var(--rise-bottom-fade)),
-          transparent 100%
-        ),
-        linear-gradient(
-          to right,
-          transparent 0%,
-          black var(--side-fade),
-          black calc(100% - var(--side-fade)),
-          transparent 100%
-        );
-
-      mask-composite: intersect;
+    .project-image:last-child {
+      --bottom-fade: var(--final-bottom-fade);
     }
 
     /* -----------------------------------
@@ -225,7 +187,7 @@
         --image-overlap: -40px;
         --image-fade: 15%;
         --side-fade: 4%;
-        --rise-bottom-fade: 25%;
+        --final-bottom-fade: 25%;
       }
 
       .name,
@@ -339,29 +301,29 @@ A costly undertaking having an absurd or ruinous outcome.
     <!-- CONTINUOUS IMAGE SEQUENCE -->
     <div class="image-sequence">
 
-      <!-- REFLECTION 1 -->
+      <!-- RISE GRADIENT -->
       <img
-        src="./assets/images/reflection_1.jpg"
-        class="project-image reflection-image"
-        alt="Reflection 1">
+        src="./assets/images/rise_gradient.jpg"
+        class="project-image"
+        alt="Rise Gradient">
 
       <!-- REFLECTION 2 -->
       <img
         src="./assets/images/reflection_2.jpg"
-        class="project-image reflection-image"
+        class="project-image"
         alt="Reflection 2">
+
+      <!-- REFLECTION 1 -->
+      <img
+        src="./assets/images/reflection_1.jpg"
+        class="project-image"
+        alt="Reflection 1">
 
       <!-- REFLECTION 3 -->
       <img
         src="./assets/images/reflection_3.jpg"
-        class="project-image reflection-image"
+        class="project-image"
         alt="Reflection 3">
-
-      <!-- RISE GRADIENT -->
-      <img
-        src="./assets/images/rise_gradient.jpg"
-        class="project-image rise-image"
-        alt="Rise Gradient">
 
     </div>
 
