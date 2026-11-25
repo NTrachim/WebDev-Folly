@@ -31,12 +31,9 @@
       bottom: 20px;
       left: 20px;
       right: 20px;
-
       display: flex;
       justify-content: space-between;
       align-items: center;
-
-      /* pointer-events removed so mobile portrait links work */
     }
 
     .name,
@@ -51,7 +48,6 @@
       pointer-events: auto;
     }
 
-    /* CENTER PROJECTS (DESKTOP ONLY) */
     .center-area {
       position: absolute;
       left: 50%;
@@ -66,11 +62,8 @@
        PROJECTS SECTION
        ----------------------------------- */
     #projects {
-      height: 25vh;
+      min-height: 25vh;
       background: black;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
       padding: 40px;
       color: white;
       font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
@@ -78,6 +71,16 @@
       line-height: 1.5;
       white-space: pre-line;
       text-align: left;
+    }
+
+    /* -----------------------------------
+       RISE IMAGE (REPLACES PLACEHOLDER)
+       ----------------------------------- */
+    .rise-image {
+      margin-top: 40px;
+      width: 100%;
+      border-radius: 8px;
+      display: block;
     }
 
     /* -----------------------------------
@@ -100,6 +103,11 @@
         border-radius: 6px;
         height: calc(100vh - 20px);
       }
+
+      .rise-image {
+        margin-top: 20px;
+        border-radius: 6px;
+      }
     }
 
     /* -----------------------------------
@@ -117,18 +125,15 @@
         width: 100%;
       }
 
-      /* Hide desktop-centered PROJECTS + CONTACT */
       .center-area,
       .contact-link.desktop {
         display: none !important;
       }
 
-      /* Mobile PROJECT + CONTACT row */
       .mobile-row {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        pointer-events: auto; /* <-- FIX: Enables tapping! */
       }
 
       .mobile-row a {
@@ -137,7 +142,6 @@
         font-weight: bold;
         text-decoration: none;
         font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
-        pointer-events: auto;
       }
     }
 
@@ -146,36 +150,30 @@
 
 <body>
 
-  <div class="image-wrapper">
-    <div class="bottom-bar">
+<div class="image-wrapper">
+  <div class="bottom-bar">
+    <div class="name">NATHAN TRACHIMOWICZ</div>
+    <a class="projects-link center-area" href="#projects">PROJECTS</a>
+    <a class="contact-link desktop" href="mailto:ntrachim@gmail.com">CONTACT</a>
 
-      <!-- NAME -->
-      <div class="name">NATHAN TRACHIMOWICZ</div>
-
-      <!-- DESKTOP PROJECTS (centered) -->
-      <a class="projects-link center-area" href="#projects">PROJECTS</a>
-
-      <!-- DESKTOP CONTACT -->
-      <a class="contact-link desktop" href="mailto:ntrachim@gmail.com">CONTACT</a>
-
-      <!-- MOBILE PORTRAIT ROW -->
-      <div class="mobile-row">
-        <a href="#projects">PROJECTS</a>
-        <a href="mailto:ntrachim@gmail.com">CONTACT</a>
-      </div>
-
+    <div class="mobile-row">
+      <a href="#projects">PROJECTS</a>
+      <a href="mailto:ntrachim@gmail.com">CONTACT</a>
     </div>
   </div>
+</div>
 
-  <div id="projects">
-folly /fŏl′ē/
-noun
-Lack of good sense, understanding, or foresight.
+<div id="projects">
+  folly /fŏl′ē/
+  noun
+  Lack of good sense, understanding, or foresight.
 
-An act or instance of foolishness.
+  An act or instance of foolishness.
 
-A costly undertaking having an absurd or ruinous outcome.
-  </div>
+  A costly undertaking having an absurd or ruinous outcome.
+
+  <img src="./assets/images/rise_gradient.JPG" class="rise-image" alt="Rise Gradient">
+</div>
 
 </body>
 </html>
