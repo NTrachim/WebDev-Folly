@@ -6,6 +6,17 @@
   <title>Folly In Love</title>
 
   <style>
+
+    /* -----------------------------------
+       GLOBAL SETTINGS
+       ----------------------------------- */
+    :root {
+      --image-overlap: -80px;
+      --image-fade: 15%;
+      --side-fade: 4%;
+      --rise-bottom-fade: 25%;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
@@ -13,6 +24,9 @@
       background-color: black;
     }
 
+    /* -----------------------------------
+       HERO IMAGE
+       ----------------------------------- */
     .image-wrapper {
       margin: 20px;
       height: calc(100vh - 40px);
@@ -69,28 +83,150 @@
       font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
       font-size: 1.4rem;
       line-height: 1.5;
-      white-space: pre-line;
       text-align: left;
       position: relative;
-      z-index: 1;
+      isolation: isolate;
     }
 
     /* -----------------------------------
-       RISE IMAGE (STRONG OVERLAP)
+       FOLLY DEFINITION — FOREGROUND
        ----------------------------------- */
-    .rise-image {
-      margin-top: -80px;   /* Strong overlap */
-      width: 100%;
-      border-radius: 8px;
-      display: block;
+    .folly-definition {
       position: relative;
       z-index: 2;
+      white-space: pre-line;
+    }
+
+    /* -----------------------------------
+       IMAGE SEQUENCE
+       ----------------------------------- */
+    .image-sequence {
+      position: relative;
+      z-index: 1;
+      margin-top: var(--image-overlap);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* -----------------------------------
+       SHARED IMAGE LAYOUT
+       ----------------------------------- */
+    .project-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-radius: 8px;
+    }
+
+    /* -----------------------------------
+       REFLECTION IMAGES
+       SOFT TOP, BOTTOM, LEFT & RIGHT EDGES
+       ----------------------------------- */
+    .reflection-image {
+
+      -webkit-mask-image:
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          black var(--image-fade),
+          black calc(100% - var(--image-fade)),
+          transparent 100%
+        ),
+        linear-gradient(
+          to right,
+          transparent 0%,
+          black var(--side-fade),
+          black calc(100% - var(--side-fade)),
+          transparent 100%
+        );
+
+      -webkit-mask-composite: source-in;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          black var(--image-fade),
+          black calc(100% - var(--image-fade)),
+          transparent 100%
+        ),
+        linear-gradient(
+          to right,
+          transparent 0%,
+          black var(--side-fade),
+          black calc(100% - var(--side-fade)),
+          transparent 100%
+        );
+
+      mask-composite: intersect;
+    }
+
+    /* -----------------------------------
+       RISE IMAGE
+       EXTENDED SOFT FADE BACK TO BLACK
+       ----------------------------------- */
+    .rise-image {
+
+      -webkit-mask-image:
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          black var(--image-fade),
+          black calc(100% - var(--rise-bottom-fade)),
+          transparent 100%
+        ),
+        linear-gradient(
+          to right,
+          transparent 0%,
+          black var(--side-fade),
+          black calc(100% - var(--side-fade)),
+          transparent 100%
+        );
+
+      -webkit-mask-composite: source-in;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          black var(--image-fade),
+          black calc(100% - var(--rise-bottom-fade)),
+          transparent 100%
+        ),
+        linear-gradient(
+          to right,
+          transparent 0%,
+          black var(--side-fade),
+          black calc(100% - var(--side-fade)),
+          transparent 100%
+        );
+
+      mask-composite: intersect;
+    }
+
+    /* -----------------------------------
+       FINAL BLACK SPACE
+       ----------------------------------- */
+    .page-end {
+      height: 10vh;
+      background-color: black;
     }
 
     /* -----------------------------------
        MOBILE SCALING
        ----------------------------------- */
     @media (max-width: 768px) {
+
+      :root {
+        --image-overlap: -40px;
+        --image-fade: 15%;
+        --side-fade: 4%;
+        --rise-bottom-fade: 25%;
+      }
 
       .name,
       .projects-link,
@@ -109,10 +245,12 @@
         height: calc(100vh - 20px);
       }
 
-      /* Slightly softer overlap on mobile */
-      .rise-image {
-        margin-top: -40px;
+      .project-image {
         border-radius: 6px;
+      }
+
+      .page-end {
+        height: 5vh;
       }
     }
 
@@ -140,6 +278,7 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+        pointer-events: auto;
       }
 
       .mobile-row a {
@@ -148,6 +287,7 @@
         font-weight: bold;
         text-decoration: none;
         font-family: "Franklin Gothic Demi Cond", Arial, sans-serif;
+        pointer-events: auto;
       }
     }
 
@@ -156,20 +296,37 @@
 
 <body>
 
+  <!-- HERO IMAGE -->
   <div class="image-wrapper">
     <div class="bottom-bar">
-      <div class="name">NATHAN TRACHIMOWICZ</div>
-      <a class="projects-link center-area" href="#projects">PROJECTS</a>
-      <a class="contact-link desktop" href="mailto:ntrachim@gmail.com">CONTACT</a>
 
+      <!-- NAME -->
+      <div class="name">NATHAN TRACHIMOWICZ</div>
+
+      <!-- DESKTOP PROJECTS -->
+      <a class="projects-link center-area" href="#projects">
+        PROJECTS
+      </a>
+
+      <!-- DESKTOP CONTACT -->
+      <a class="contact-link desktop" href="mailto:ntrachim@gmail.com">
+        CONTACT
+      </a>
+
+      <!-- MOBILE PORTRAIT NAVIGATION -->
       <div class="mobile-row">
         <a href="#projects">PROJECTS</a>
         <a href="mailto:ntrachim@gmail.com">CONTACT</a>
       </div>
+
     </div>
   </div>
 
+  <!-- PROJECTS SECTION -->
   <div id="projects">
+
+    <!-- FOLLY DEFINITION — FOREGROUND -->
+    <div class="folly-definition">
 folly /fŏl′ē/
 noun
 Lack of good sense, understanding, or foresight.
@@ -177,9 +334,41 @@ Lack of good sense, understanding, or foresight.
 An act or instance of foolishness.
 
 A costly undertaking having an absurd or ruinous outcome.
+    </div>
 
-    <img src="./assets/images/rise_gradient.jpg" class="rise-image" alt="Rise Gradient">
+    <!-- CONTINUOUS IMAGE SEQUENCE -->
+    <div class="image-sequence">
+
+      <!-- REFLECTION 1 -->
+      <img
+        src="./assets/images/reflection_1.jpg"
+        class="project-image reflection-image"
+        alt="Reflection 1">
+
+      <!-- REFLECTION 2 -->
+      <img
+        src="./assets/images/reflection_2.jpg"
+        class="project-image reflection-image"
+        alt="Reflection 2">
+
+      <!-- REFLECTION 3 -->
+      <img
+        src="./assets/images/reflection_3.jpg"
+        class="project-image reflection-image"
+        alt="Reflection 3">
+
+      <!-- RISE GRADIENT -->
+      <img
+        src="./assets/images/rise_gradient.jpg"
+        class="project-image rise-image"
+        alt="Rise Gradient">
+
+    </div>
+
   </div>
+
+  <!-- FINAL FADE INTO BLACK -->
+  <div class="page-end"></div>
 
 </body>
 </html>
